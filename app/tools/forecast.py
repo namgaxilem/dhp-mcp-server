@@ -1,22 +1,11 @@
-from typing import Any
-import httpx
+import utils.make_request as make_nws_request
+from server import mcp
+
 
 NWS_API_BASE = "https://api.weather.gov"
-USER_AGENT = "weather-app/1.0"
 
-async def make_nws_request(url: str) -> dict[str, Any] | None:
-    headers = {
-        "User-Agent": USER_AGENT,
-        "Accept": "application/geo+json"
-    }
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.get(url, headers=headers, timeout=30.0)
-            response.raise_for_status()
-            return response.json()
-        except Exception:
-            return None
 
+@mcp.tool()
 async def get_forecast(latitude: float, longitude: float) -> str:
     points_url = f"{NWS_API_BASE}/points/{latitude},{longitude}"
     points_data = await make_nws_request(points_url)

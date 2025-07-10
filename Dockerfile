@@ -20,4 +20,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
 
 # Set the default command to run your server
-CMD ["python", "app/server.py"]
+CMD ["python", "-m", "app.main"]
