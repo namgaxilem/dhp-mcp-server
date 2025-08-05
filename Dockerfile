@@ -1,23 +1,26 @@
-# Use an official Python image
-FROM python:3.11-slim
+FROM python:3.12-slim
 
-# Set working directory inside the container
-WORKDIR /usr/src/app
+# Set working directory
+WORKDIR /app
 
-# Copy requirements first for better layer caching
+# Install system dependencies (optional but useful for full FastAPI + Uvicorn stack)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install
 COPY requirements.txt .
-
-# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your application
-COPY app/ ./app/
+# Copy entire project
+COPY . .
 
-# Set environment variables if needed (optional)
-ENV PYTHONUNBUFFERED=1
+# Make the script executable
+RUN chmod +x ./start.sh
 
-# Expose port if your server listens on one (example: 8000)
-EXPOSE 8000
+# Expose ports if needed (example: 8000-9000+)
+EXPOSE 8080
 
-# Set the default command to run your server
-CMD ["python", "app/main.py"]
+# Set entrypoint to the bash script
+ENTRYPOINT ["./start.sh"]

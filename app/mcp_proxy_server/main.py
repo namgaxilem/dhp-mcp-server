@@ -12,6 +12,7 @@ ROUTE_MAP = {
 
 client = httpx.AsyncClient(timeout=None)
 
+
 @app.api_route("/{full_path:path}", methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
 async def reverse_proxy(request: Request, full_path: str):
     matched_prefix = None
@@ -57,4 +58,4 @@ async def reverse_proxy(request: Request, full_path: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8080, reload=True)
+    uvicorn.run("main:app", host='0.0.0.0', port=8080, reload=True)
