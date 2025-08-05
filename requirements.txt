@@ -1,3 +1,6 @@
 mcp==1.10.1
 uvicorn
 httpx
+Pillow
+fastapi
+pydantic
