@@ -1,3 +1,8 @@
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("DHP MCP Server", stateless_http=True, host="0.0.0.0", port=9001)
+from app.main.router_config import ROUTE_MAP
+
+mcp = FastMCP(ROUTE_MAP["app2"]["mcpServerName"], 
+              stateless_http=True, 
+              host="0.0.0.0", 
+              port=ROUTE_MAP["app2"]["port"])

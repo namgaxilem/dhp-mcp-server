@@ -1,6 +1,6 @@
 from mcp.server.fastmcp import Image
 from PIL import Image as PILImage
-from server import mcp
+from app.main.mcp_servers.thumbnail.server import mcp
 
 @mcp.tool()
 def generate_thumbnail(image_path: str) -> Image:

@@ -1,5 +1,5 @@
-from utils.make_request import make_nws_request
-from server import mcp
+from app.main.mcp_servers.hello.utils.make_request import make_nws_request
+from app.main.mcp_servers.hello.server import mcp
 # from mcp.server.fastmcp import Context
 from typing import Any
 import httpx

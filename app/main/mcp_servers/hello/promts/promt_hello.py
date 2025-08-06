@@ -1,4 +1,4 @@
-from server import mcp
+from app.main.mcp_servers.hello.server import mcp
 
 @mcp.prompt()
 def hello_promt():

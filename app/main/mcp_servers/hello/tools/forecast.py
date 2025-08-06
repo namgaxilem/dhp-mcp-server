@@ -1,5 +1,5 @@
-import utils.make_request as make_nws_request
-from server import mcp
+import app.main.mcp_servers.hello.utils.make_request as make_nws_request
+from app.main.mcp_servers.hello.server import mcp
 
 
 NWS_API_BASE = "https://api.weather.gov"

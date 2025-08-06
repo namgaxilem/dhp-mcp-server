@@ -1,6 +1,6 @@
-from server import mcp
+from app.main.mcp_servers.thumbnail.server import mcp
 
-import tools.thumbnail
+import app.main.mcp_servers.thumbnail.tools.thumbnail
 
 # Entry point to run the server
 if __name__ == "__main__":
